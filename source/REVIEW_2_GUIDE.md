@@ -97,11 +97,12 @@ Baseline, XOR-only, RO-only and hybrid must remain independently testable. The p
 | Component | Selection for this review | Reason / limit |
 |---|---|---|
 | Development platform | Laptop + Python 3 | Immediate reproducible simulation |
-| Numerical library | NumPy | CRP generation, delay model and a compact educational LR implementation |
+| Numerical library | NumPy | CRP generation and the additive-delay PUF model |
+| ML framework | PyTorch | Logistic-regression attacker using a linear layer, binary cross-entropy and Adam |
 | Initial PUF | 64-stage Arbiter model | Clear baseline with known modeling vulnerability |
 | First comparison | Three-chain XOR Arbiter model | Small controlled composition, not full hybrid |
 | Data | 16,000 unique synthetic challenges | 10,000 training, 2,000 validation, 4,000 test |
-| Future attacks | scikit-learn / PyTorch or established PUF attack implementations | Generic plus structure-aware models; verify licensing and versions |
+| Future attacks | Additional scikit-learn / PyTorch models or established PUF attack implementations | Generic plus structure-aware models; verify licensing and versions |
 | Future hardware | Available departmental FPGA, subject to board confirmation | Check tool support, access to temperature monitoring, timing/routing control and communications |
 | Future interface | Board USB/UART | Read CRPs without exporting internal component responses in the deployed interface |
 
@@ -129,9 +130,13 @@ The attack sees challenge-derived features and response labels; it does not rece
 
 ### Reproduce the demonstration
 
-Install Python 3 and NumPy if needed. In this folder, run:
+Install the pinned NumPy and PyTorch dependencies from the repository root:
 
-    python3 prototype.py
+    python3 -m venv .venv
+    .venv/bin/python -m pip install -r requirements.txt
+    .venv/bin/python source/prototype.py
+
+On Windows, use `.venv\Scripts\python.exe` in place of `.venv/bin/python`. The recorded environment uses Python 3.13. PyTorch performs logistic-regression training and prediction; NumPy performs PUF simulation. The model uses one linear score, BCEWithLogitsLoss, automatic gradients and Adam for 500 steps on CPU in float64 precision. The intercept is the existing constant feature and is excluded from L2 regularization. This framework change preserves the original experiment and does not add a neural network with hidden layers. Training time includes model setup and varies by host.
 
 Outputs: `results.json`, `attack_results.csv`, and `crps.csv`. Results are deterministic apart from timing and minor numerical variation. The script checks challenge uniqueness, a known feature-transform example, deterministic responses and XOR parity. It contains no FPGA communication and no full-hybrid or compensation module.
 
@@ -144,7 +149,7 @@ Demo sequence: explain one challenge and response; run the script; show the trai
 3. **Gap and problem statement:** Modeling vulnerability, reliability and implementation cost.
 4. **Requirements and threat model:** What the attacker sees; how results will be evaluated.
 5. **Proposed architecture:** Draw the flow above; distinguish implemented and planned modules.
-6. **Component selection:** Explain Python/NumPy, 64 stages, XOR comparison and conditional FPGA path.
+6. **Component selection:** Explain Python/NumPy/PyTorch, 64 stages, XOR comparison and conditional FPGA path.
 7. **Implemented initial module:** Show the simulator, CRP schema and dataset splits.
 8. **Preliminary results:** Use the measured table; state single-seed, synthetic-data limitations.
 9. **Remaining work and risks:** RO integration, exact combiner, stronger attacks and reliability model.

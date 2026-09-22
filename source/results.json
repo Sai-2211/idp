@@ -6,7 +6,7 @@
   "train": 10000,
   "validation": 2000,
   "test": 4000,
-  "optimizer": "Fixed 500-step Adam logistic regression; lr=.05, L2=1e-4; no hyperparameter search",
+  "optimizer": "PyTorch Adam logistic regression; 500 full-batch steps; lr=.05, L2=1e-4 (no intercept penalty); no hyperparameter search",
   "baseline_test_fraction_ones": 0.561,
   "xor_test_fraction_ones": 0.4675,
   "simulated_devices": 20,
@@ -21,7 +21,7 @@
       "validation_accuracy": 0.97,
       "test_accuracy": 0.96875,
       "train_majority_test_accuracy": 0.561,
-      "train_seconds": 0.013051417015958577
+      "train_seconds": 0.05381445898092352
     },
     {
       "design": "Arbiter",
@@ -29,7 +29,7 @@
       "validation_accuracy": 0.9905,
       "test_accuracy": 0.99125,
       "train_majority_test_accuracy": 0.561,
-      "train_seconds": 0.027947249996941537
+      "train_seconds": 0.08240929199382663
     },
     {
       "design": "Arbiter",
@@ -37,7 +37,7 @@
       "validation_accuracy": 0.994,
       "test_accuracy": 0.99375,
       "train_majority_test_accuracy": 0.561,
-      "train_seconds": 0.055963082995731384
+      "train_seconds": 0.1256747080187779
     },
     {
       "design": "3-XOR Arbiter",
@@ -45,7 +45,7 @@
       "validation_accuracy": 0.553,
       "test_accuracy": 0.5515,
       "train_majority_test_accuracy": 0.4675,
-      "train_seconds": 0.011598374985624105
+      "train_seconds": 0.04262895800638944
     },
     {
       "design": "3-XOR Arbiter",
@@ -53,7 +53,7 @@
       "validation_accuracy": 0.538,
       "test_accuracy": 0.5555,
       "train_majority_test_accuracy": 0.5325,
-      "train_seconds": 0.02921383301145397
+      "train_seconds": 0.08141983300447464
     },
     {
       "design": "3-XOR Arbiter",
@@ -61,7 +61,13 @@
       "validation_accuracy": 0.553,
       "test_accuracy": 0.5475,
       "train_majority_test_accuracy": 0.5325,
-      "train_seconds": 0.05684004200156778
+      "train_seconds": 0.11849808300030418
     }
-  ]
+  ],
+  "framework": "PyTorch",
+  "torch_version": "2.14.0",
+  "numpy_version": "2.5.3",
+  "training_device": "cpu",
+  "training_dtype": "float64",
+  "torch_threads": 1
 }

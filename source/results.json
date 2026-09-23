@@ -21,7 +21,7 @@
       "validation_accuracy": 0.97,
       "test_accuracy": 0.96875,
       "train_majority_test_accuracy": 0.561,
-      "train_seconds": 0.05381445898092352
+      "train_seconds": 0.05127566697774455
     },
     {
       "design": "Arbiter",
@@ -29,7 +29,7 @@
       "validation_accuracy": 0.9905,
       "test_accuracy": 0.99125,
       "train_majority_test_accuracy": 0.561,
-      "train_seconds": 0.08240929199382663
+      "train_seconds": 0.07542662500054576
     },
     {
       "design": "Arbiter",
@@ -37,7 +37,7 @@
       "validation_accuracy": 0.994,
       "test_accuracy": 0.99375,
       "train_majority_test_accuracy": 0.561,
-      "train_seconds": 0.1256747080187779
+      "train_seconds": 0.10822495800675824
     },
     {
       "design": "3-XOR Arbiter",
@@ -45,7 +45,7 @@
       "validation_accuracy": 0.553,
       "test_accuracy": 0.5515,
       "train_majority_test_accuracy": 0.4675,
-      "train_seconds": 0.04262895800638944
+      "train_seconds": 0.041086791025009006
     },
     {
       "design": "3-XOR Arbiter",
@@ -53,7 +53,7 @@
       "validation_accuracy": 0.538,
       "test_accuracy": 0.5555,
       "train_majority_test_accuracy": 0.5325,
-      "train_seconds": 0.08141983300447464
+      "train_seconds": 0.07487320798099972
     },
     {
       "design": "3-XOR Arbiter",
@@ -61,7 +61,7 @@
       "validation_accuracy": 0.553,
       "test_accuracy": 0.5475,
       "train_majority_test_accuracy": 0.5325,
-      "train_seconds": 0.11849808300030418
+      "train_seconds": 0.1059990000212565
     }
   ],
   "framework": "PyTorch",
